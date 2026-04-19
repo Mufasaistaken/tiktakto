@@ -1,3 +1,4 @@
+Hosted on Vercel @ https://tiktakto-ggnz.vercel.app/
 # tiktakto
 
 > Setup + Security Baseline (April 19, 2026): Required install baseline for this app is **Node.js LTS (includes npm)**, then project dependencies via `npm install` in the `app/` folder (`express@^4.21.2`, `socket.io@^4.8.1`). For a current vulnerability check on any target environment, run `npm audit` after install.
