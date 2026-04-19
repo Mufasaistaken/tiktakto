@@ -372,7 +372,7 @@ sameDeviceBtn.addEventListener('click', () => {
 });
 
 separateDevicesBtn.addEventListener('click', () => {
-  selectMode('remote');
+  setSetupStatus('this feature is on the way, not ready yet');
 });
 
 startLocalBtn.addEventListener('click', () => {
