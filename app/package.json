@@ -1,0 +1,14 @@
+{
+  "name": "tiktakto",
+  "version": "1.0.0",
+  "description": "LAN multiplayer Tic-Tac-Toe",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "proxy-addr": "^2.0.7",
+    "socket.io": "^4.8.1"
+  }
+}

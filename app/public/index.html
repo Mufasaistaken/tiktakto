@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTakTo - Two Player Tic-Tac-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="welcomeScreen" class="screen">
+        <header class="title-block">
+          <p class="eyebrow">Two-Player Tic-Tac-Toe</p>
+          <h1>Toe</h1>
+          <p class="subtitle">Choose how you want to play.</p>
+        </header>
+
+        <section class="setup-panel" aria-label="Game setup">
+          <p class="setup-label">Play on:</p>
+          <div class="setup-row">
+            <button id="sameDeviceBtn" class="action" type="button">Same Device</button>
+            <button id="separateDevicesBtn" class="action" type="button">Separate Devices</button>
+          </div>
+
+          <section id="modeDetails" class="mode-details hidden" aria-live="polite">
+            <div id="localDetails" class="setup-step hidden">
+              <p class="setup-label">Play turns on this same screen.</p>
+              <button id="startLocalBtn" class="action action-primary" type="button">Start Game</button>
+            </div>
+
+            <div id="remoteDetails" class="setup-step hidden">
+              <div id="remoteRoleStep" class="setup-step hidden">
+                <p class="setup-label">Are you the initiator?</p>
+                <div class="setup-row">
+                  <button id="initiatorBtn" class="action" type="button">Yes</button>
+                  <button id="joinerBtn" class="action" type="button">No</button>
+                </div>
+              </div>
+
+              <div id="initiatorPanel" class="setup-step hidden">
+                <p class="setup-label">Create a room key and share it</p>
+                <button id="createRoomBtn" class="action action-primary" type="button">Generate Key</button>
+                <div id="generatedKeyRow" class="setup-step hidden">
+                  <p id="generatedKeyText" class="setup-label">Room key:</p>
+                  <div class="setup-row">
+                    <button id="copyRoomBtn" class="action" type="button">Copy Key</button>
+                    <button id="startRemoteBtn" class="action action-primary" type="button">Start Game</button>
+                  </div>
+                </div>
+              </div>
+
+                <div id="joinerPanel" class="setup-step hidden">
+                  <p class="setup-label">Enter room key</p>
+                  <div class="room-join">
+                  <input id="roomCodeInput" maxlength="8" placeholder="ROOMKEY8" aria-label="Room code" />
+                  <button id="joinRoomBtn" class="action" type="button">Join</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <p id="setupStatus" class="setup-status">Waiting for selection</p>
+        </section>
+      </section>
+
+      <section id="gameScreen" class="screen hidden">
+        <header class="title-block">
+          <p class="eyebrow">Toe</p>
+          <h1>Game On</h1>
+          <p class="subtitle">Take turns and get three in a row.</p>
+        </header>
+
+        <section class="status-panel" aria-live="polite">
+          <p id="statusText">Player X turn</p>
+          <p id="roomMeta">Same device mode</p>
+        </section>
+
+        <section class="score-panel" aria-label="Scoreboard">
+          <div class="score-card">
+            <span class="score-label">Player X</span>
+            <strong id="scoreX">0</strong>
+          </div>
+          <div class="score-card">
+            <span class="score-label">Draws</span>
+            <strong id="scoreDraw">0</strong>
+          </div>
+          <div class="score-card">
+            <span class="score-label">Player O</span>
+            <strong id="scoreO">0</strong>
+          </div>
+        </section>
+
+        <section class="board" aria-label="Tic-Tac-Toe board">
+          <button class="cell" data-index="0" aria-label="Cell 1"></button>
+          <button class="cell" data-index="1" aria-label="Cell 2"></button>
+          <button class="cell" data-index="2" aria-label="Cell 3"></button>
+          <button class="cell" data-index="3" aria-label="Cell 4"></button>
+          <button class="cell" data-index="4" aria-label="Cell 5"></button>
+          <button class="cell" data-index="5" aria-label="Cell 6"></button>
+          <button class="cell" data-index="6" aria-label="Cell 7"></button>
+          <button class="cell" data-index="7" aria-label="Cell 8"></button>
+          <button class="cell" data-index="8" aria-label="Cell 9"></button>
+        </section>
+
+        <section class="controls">
+          <button id="newRoundBtn" class="action action-primary" type="button">New Round</button>
+          <button id="resetScoreBtn" class="action" type="button">Reset Score</button>
+          <button id="forfeitBtn" class="action" type="button">Forfeit Game</button>
+          <button id="backToSetupBtn" class="action" type="button">Back to Setup</button>
+        </section>
+      </section>
+    </main>
+    <footer class="site-mark" aria-label="Trademark">Mustafawastaken&trade;</footer>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

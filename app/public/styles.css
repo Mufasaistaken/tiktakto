@@ -1,0 +1,293 @@
+:root {
+  --bg-top: #f8efe1;
+  --bg-bottom: #dbe7f5;
+  --card: #fffaf2;
+  --ink: #17222f;
+  --muted: #5c6670;
+  --accent-a: #ff6f3c;
+  --accent-b: #118ab2;
+  --grid-line: #17222f;
+  --cell-bg: #fffcf6;
+  --shadow: 0 14px 30px rgba(23, 34, 47, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 12% 18%, #ffe2a8 0, transparent 34%),
+    radial-gradient(circle at 88% 76%, #bde0fe 0, transparent 38%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  padding: 1.5rem;
+}
+
+.site-mark {
+  position: fixed;
+  left: 50%;
+  bottom: 0.7rem;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0.22rem 0.6rem;
+  border: 1px solid #17222f40;
+  border-radius: 999px;
+  background: #ffffffc9;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.app {
+  width: min(92vw, 560px);
+  background: color-mix(in srgb, var(--card) 85%, white 15%);
+  border: 3px solid var(--ink);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.1rem 1.4rem;
+  animation: app-in 420ms ease-out;
+}
+
+.screen {
+  display: grid;
+}
+
+@keyframes app-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.title-block h1 {
+  margin: 0.12rem 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.subtitle {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.status-panel {
+  margin-top: 1rem;
+  border: 2px dashed var(--ink);
+  border-radius: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  background: #ffffffc0;
+}
+
+#statusText {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.04rem;
+}
+
+.setup-panel {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.setup-step {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.mode-details {
+  border: 2px solid var(--ink);
+  border-radius: 0.85rem;
+  padding: 0.7rem;
+  background: #ffffffd9;
+}
+
+.setup-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.setup-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.setup-status {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.room-join {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.55rem;
+}
+
+#roomCodeInput {
+  border: 2px solid var(--ink);
+  border-radius: 0.7rem;
+  background: #fff;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#roomMeta {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.87rem;
+}
+
+.score-panel {
+  margin-top: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.score-card {
+  border: 2px solid var(--ink);
+  border-radius: 0.75rem;
+  padding: 0.55rem;
+  background: #ffffffde;
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+}
+
+.score-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.score-card strong {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+}
+
+.board {
+  margin-top: 1rem;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+}
+
+.cell {
+  border: 3px solid var(--grid-line);
+  border-radius: 0.8rem;
+  background: var(--cell-bg);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: clamp(2rem, 8vw, 3.25rem);
+  line-height: 1;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.cell:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #fff3d9;
+}
+
+.cell:disabled {
+  cursor: not-allowed;
+}
+
+.cell.x {
+  color: var(--accent-a);
+}
+
+.cell.o {
+  color: var(--accent-b);
+}
+
+.cell.win {
+  background: #d5f2d3;
+}
+
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.action {
+  flex: 1;
+  border: 2px solid var(--ink);
+  border-radius: 0.7rem;
+  padding: 0.62rem 0.7rem;
+  font: inherit;
+  font-weight: 700;
+  background: #f0f7ff;
+  cursor: pointer;
+}
+
+.action:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.action-primary {
+  background: #ffe6db;
+}
+
+.action:hover {
+  filter: brightness(0.97);
+}
+
+.action.is-selected {
+  background: #ffe6db;
+  box-shadow: inset 0 0 0 2px #17222f30;
+}
+
+@media (max-width: 480px) {
+  .app {
+    border-radius: 1rem;
+    padding: 0.95rem 0.95rem 1.15rem;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .room-join {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-row {
+    grid-template-columns: 1fr;
+  }
+}
