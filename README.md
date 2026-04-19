@@ -19,6 +19,7 @@ tiktakto/
       index.html
       styles.css
       app.js
+      config.js
     src/
       server.js
 ```
@@ -132,6 +133,38 @@ Default URL:
 - `http://localhost:3000`
 
 The server binds on `0.0.0.0`, so LAN devices can connect if firewall rules allow port `3000`.
+
+## Vercel Frontend + External Backend
+
+Vercel should host the static frontend only. Host Node/Socket.IO backend separately (VM/Render/Railway/Fly).
+
+### Frontend (Vercel)
+
+Set Vercel project to:
+
+- Root Directory: `app/public`
+- Framework Preset: `Other`
+- Build Command: *(empty)*
+- Output Directory: `.`
+
+### Backend URL wiring
+
+Edit `app/public/config.js`:
+
+```js
+window.__TOE_CONFIG__ = {
+  BACKEND_URL: "https://your-backend.example.com"
+};
+```
+
+Then redeploy Vercel.
+
+### Backend CORS/origin allowlist
+
+On backend host, set:
+
+- `CLIENT_ORIGINS=https://your-vercel-app.vercel.app`
+- `ALLOW_NO_ORIGIN=false`
 
 ### Security-related environment variables
 

@@ -1,4 +1,9 @@
-const socket = typeof window.io === 'function' ? window.io() : null;
+const toeConfig = window.__TOE_CONFIG__ || {};
+const socketBaseUrl = String(toeConfig.BACKEND_URL || '').trim();
+const resolvedSocketUrl = socketBaseUrl || window.location.origin;
+const socket = typeof window.io === 'function'
+  ? window.io(resolvedSocketUrl, { transports: ['websocket', 'polling'] })
+  : null;
 
 const cells = Array.from(document.querySelectorAll('.cell'));
 const welcomeScreen = document.getElementById('welcomeScreen');

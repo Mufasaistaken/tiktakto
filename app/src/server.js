@@ -73,7 +73,7 @@ app.use((req, res, next) => {
   res.setHeader("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';"
+    "default-src 'self'; script-src 'self' https://cdn.socket.io; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';"
   );
   next();
 });
